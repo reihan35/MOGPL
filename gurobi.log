@@ -1,0 +1,33 @@
+Optimize a model with 6 rows, 14 columns and 24 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+02]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 7e+01]
+Presolve time: 0.01s
+Presolved: 6 rows, 14 columns, 24 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.775000e+01   0.000000e+00      0s
+       6    1.8000000e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.01 seconds
+Optimal objective  1.800000000e+01
+Optimize a model with 6 rows, 14 columns and 24 nonzeros
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+02]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 7e+01]
+Presolve time: 0.01s
+Presolved: 6 rows, 14 columns, 24 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   5.775000e+01   0.000000e+00      0s
+       6    1.8000000e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 6 iterations and 0.01 seconds
+Optimal objective  1.800000000e+01
+
+Gurobi 8.0.1 (linux64, Python) logging started Fri Nov 23 19:15:28 2018
+
