@@ -7,10 +7,10 @@ Created on Fri Nov 23 17:19:23 2018
 """
 import re
 
-#from gurobipy import *
+from gurobipy import *
 import numpy as np
 
-cities = (0,1,2)
+cities = (1,13,28)
 k=len(cities)
 
 #recuperations des populations des villes 
@@ -103,7 +103,7 @@ for j in range(n):
 	for i in cities:
 		ci.append(dis[j][i])
 
-#print(len(c))
+print(ci)
 
 m=[]
 l2 =[]
@@ -147,7 +147,7 @@ for i in range(k):
 for i in range(n):
     b.append(0)
 print(len(b))
-'''
+
 ######################FONCTION OBJECTIVE################################
 c = []
 epsilon=1e-6
@@ -238,4 +238,4 @@ PE=1-Sat1/Sat
 print("PE",'=',PE)
 
 #ma =m1.write("qa.lp")
-'''
+"""

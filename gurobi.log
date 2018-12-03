@@ -31,3 +31,632 @@ Optimal objective  1.800000000e+01
 
 Gurobi 8.0.1 (linux64, Python) logging started Fri Nov 23 19:15:28 2018
 
+
+Gurobi 8.0.1 (linux64, Python) logging started Mon Dec  3 11:33:44 2018
+
+Optimize a model with 39 rows, 108 columns and 216 nonzeros
+Variable types: 0 continuous, 108 integer (108 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+05]
+  Objective range  [1e+00, 3e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 6e+05]
+Found heuristic solution: objective 464.1900000
+Presolve time: 0.00s
+Presolved: 39 rows, 108 columns, 216 nonzeros
+Variable types: 0 continuous, 108 integer (108 binary)
+
+Root relaxation: objective 2.793478e+02, 41 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  279.34784    0    4  464.19000  279.34784  39.8%     -    0s
+H    0     0                     287.5700000  279.34784  2.86%     -    0s
+H    0     0                     285.7300000  279.34784  2.23%     -    0s
+H    0     0                     285.3500000  279.34784  2.10%     -    0s
+     0     0  280.71332    0    5  285.35000  280.71332  1.62%     -    0s
+     0     0  280.71332    0    3  285.35000  280.71332  1.62%     -    0s
+     0     0  281.83616    0    7  285.35000  281.83616  1.23%     -    0s
+H    0     0                     283.4400000  281.83616  0.57%     -    0s
+H    0     0                     282.5300000  281.83616  0.25%     -    0s
+     0     0  282.44684    0    4  282.53000  282.44684  0.03%     -    0s
+
+Cutting planes:
+  Cover: 3
+
+Explored 1 nodes (70 simplex iterations) in 0.08 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 6: 282.53 283.44 285.35 ... 464.19
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.825300000000e+02, best bound 2.825300000000e+02, gap 0.0000%
+Optimize a model with 72 rows, 1333 columns and 2592 nonzeros
+Variable types: 1 continuous, 1332 integer (1332 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+05]
+  Objective range  [9e-07, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 6e+05]
+Found heuristic solution: objective 0.0003901
+Presolve removed 0 rows and 37 columns
+Presolve time: 0.00s
+Presolved: 72 rows, 1296 columns, 2592 nonzeros
+Variable types: 0 continuous, 1296 integer (1296 binary)
+
+Root relaxation: objective 1.727000e-04, 36 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                       0.0000756    0.00000   100%     -    0s
+     0     0          -    0         0.00008    0.00008  0.00%     -    0s
+
+Explored 0 nodes (36 simplex iterations) in 0.03 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 7.562e-05 0.00039009 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 7.562000000000e-05, best bound 7.562000000000e-05, gap 0.0000%
+
+Gurobi 8.0.1 (linux64, Python) logging started Mon Dec  3 12:04:15 2018
+
+Optimize a model with 39 rows, 108 columns and 216 nonzeros
+Variable types: 0 continuous, 108 integer (108 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+05]
+  Objective range  [1e+00, 3e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 6e+05]
+Found heuristic solution: objective 464.1900000
+Presolve time: 0.00s
+Presolved: 39 rows, 108 columns, 216 nonzeros
+Variable types: 0 continuous, 108 integer (108 binary)
+
+Root relaxation: objective 2.793478e+02, 41 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  279.34784    0    4  464.19000  279.34784  39.8%     -    0s
+H    0     0                     287.5700000  279.34784  2.86%     -    0s
+H    0     0                     285.7300000  279.34784  2.23%     -    0s
+H    0     0                     285.3500000  279.34784  2.10%     -    0s
+     0     0  280.71332    0    5  285.35000  280.71332  1.62%     -    0s
+     0     0  280.71332    0    3  285.35000  280.71332  1.62%     -    0s
+     0     0  281.83616    0    7  285.35000  281.83616  1.23%     -    0s
+H    0     0                     283.4400000  281.83616  0.57%     -    0s
+H    0     0                     282.5300000  281.83616  0.25%     -    0s
+     0     0  282.44684    0    4  282.53000  282.44684  0.03%     -    0s
+
+Cutting planes:
+  Cover: 3
+
+Explored 1 nodes (70 simplex iterations) in 0.01 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 6: 282.53 283.44 285.35 ... 464.19
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.825300000000e+02, best bound 2.825300000000e+02, gap 0.0000%
+Optimize a model with 1405 rows, 1333 columns and 6516 nonzeros
+Variable types: 1 continuous, 1332 integer (1332 binary)
+Coefficient statistics:
+  Matrix range     [9e-01, 1e+05]
+  Objective range  [9e-07, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 6e+05]
+Presolve time: 0.01s
+Presolved: 1405 rows, 1333 columns, 6516 nonzeros
+Variable types: 0 continuous, 1333 integer (1332 binary)
+Found heuristic solution: objective 33.7504087
+Found heuristic solution: objective 23.2302859
+Found heuristic solution: objective 20.9503773
+
+Root relaxation: objective 5.198768e+00, 863 iterations, 0.03 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    5.19877    0  250   20.95038    5.19877  75.2%     -    0s
+H    0     0                       9.8101602    5.19877  47.0%     -    0s
+H    0     0                       9.8101593    5.19877  47.0%     -    0s
+H    0     0                       9.6901471    5.19877  46.3%     -    0s
+H    0     0                       9.6901446    5.19877  46.3%     -    0s
+     0     0    6.00139    0  175    9.69014    6.00139  38.1%     -    0s
+     0     0    6.67738    0   79    9.69014    6.67738  31.1%     -    0s
+H    0     0                       7.1501397    6.67738  6.61%     -    0s
+H    0     0                       6.8101320    6.67738  1.95%     -    0s
+     0     0 infeasible    0         6.81013    6.81013  0.00%     -    0s
+
+Explored 1 nodes (2141 simplex iterations) in 0.16 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 9: 6.81013 7.15014 9.69014 ... 33.7504
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.810132010000e+00, best bound 6.810132010000e+00, gap 0.0000%
+Optimize a model with 39 rows, 108 columns and 216 nonzeros
+Variable types: 0 continuous, 108 integer (108 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+05]
+  Objective range  [1e+00, 3e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 6e+05]
+Found heuristic solution: objective 403.2600000
+Presolve time: 0.00s
+Presolved: 39 rows, 108 columns, 216 nonzeros
+Variable types: 0 continuous, 108 integer (108 binary)
+
+Root relaxation: objective 1.305818e+02, 38 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  130.58178    0    4  403.26000  130.58178  67.6%     -    0s
+H    0     0                     147.7400000  130.58178  11.6%     -    0s
+H    0     0                     132.9200000  130.58178  1.76%     -    0s
+H    0     0                     132.0100000  130.58178  1.08%     -    0s
+     0     0     cutoff    0       132.01000  132.01000  0.00%     -    0s
+
+Cutting planes:
+  MIR: 1
+
+Explored 1 nodes (39 simplex iterations) in 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 132.01 132.92 147.74 403.26 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.320100000000e+02, best bound 1.320100000000e+02, gap 0.0000%
+Optimize a model with 75 rows, 109 columns and 357 nonzeros
+Variable types: 1 continuous, 108 integer (108 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+05]
+  Objective range  [1e-06, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 6e+05]
+Found heuristic solution: objective 24.9704033
+Presolve removed 1 rows and 2 columns
+Presolve time: 0.00s
+Presolved: 74 rows, 107 columns, 316 nonzeros
+Variable types: 0 continuous, 107 integer (106 binary)
+
+Root relaxation: objective 6.810131e+00, 51 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    6.81013    0    2   24.97040    6.81013  72.7%     -    0s
+H    0     0                      14.1401395    6.81013  51.8%     -    0s
+H    0     0                       6.8101320    6.81013  0.00%     -    0s
+
+Explored 1 nodes (51 simplex iterations) in 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 6.81013 14.1401 24.9704 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.810132010000e+00, best bound 6.810131346491e+00, gap 0.0000%
+Optimize a model with 1405 rows, 1333 columns and 6516 nonzeros
+Variable types: 1 continuous, 1332 integer (1332 binary)
+Coefficient statistics:
+  Matrix range     [9e-01, 1e+05]
+  Objective range  [9e-07, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 6e+05]
+Presolve time: 0.01s
+Presolved: 1405 rows, 1333 columns, 6516 nonzeros
+Variable types: 0 continuous, 1333 integer (1332 binary)
+Found heuristic solution: objective 33.7504087
+Found heuristic solution: objective 23.2302859
+Found heuristic solution: objective 20.9503773
+
+Root relaxation: objective 5.198768e+00, 863 iterations, 0.03 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    5.19877    0  250   20.95038    5.19877  75.2%     -    0s
+H    0     0                       9.8101602    5.19877  47.0%     -    0s
+H    0     0                       9.8101593    5.19877  47.0%     -    0s
+H    0     0                       9.6901471    5.19877  46.3%     -    0s
+H    0     0                       9.6901446    5.19877  46.3%     -    0s
+     0     0    6.00139    0  175    9.69014    6.00139  38.1%     -    0s
+     0     0    6.67738    0   79    9.69014    6.67738  31.1%     -    0s
+H    0     0                       7.1501397    6.67738  6.61%     -    0s
+H    0     0                       6.8101320    6.67738  1.95%     -    0s
+     0     0 infeasible    0         6.81013    6.81013  0.00%     -    0s
+
+Explored 1 nodes (2141 simplex iterations) in 0.16 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 9: 6.81013 7.15014 9.69014 ... 33.7504
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.810132010000e+00, best bound 6.810132010000e+00, gap 0.0000%
+Optimize a model with 1405 rows, 1333 columns and 6516 nonzeros
+Variable types: 1 continuous, 1332 integer (1332 binary)
+Coefficient statistics:
+  Matrix range     [9e-01, 1e+05]
+  Objective range  [9e-07, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 4e+05]
+Presolve time: 0.01s
+Presolved: 1405 rows, 1333 columns, 6516 nonzeros
+Variable types: 0 continuous, 1333 integer (1332 binary)
+Found heuristic solution: objective 33.7503227
+Found heuristic solution: objective 24.0003014
+Found heuristic solution: objective 23.7203882
+
+Root relaxation: objective 4.091181e+00, 661 iterations, 0.02 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    4.09118    0  238   23.72039    4.09118  82.8%     -    0s
+H    0     0                       9.0901313    4.09118  55.0%     -    0s
+H    0     0                       6.4601122    4.09118  36.7%     -    0s
+     0     0    5.21650    0   90    6.46011    5.21650  19.3%     -    0s
+     0     0    5.66341    0   91    6.46011    5.66341  12.3%     -    0s
+H    0     0                       6.1001206    5.66341  7.16%     -    0s
+H    0     0                       5.9301139    5.66341  4.50%     -    0s
+     0     0 infeasible    0         5.93011    5.93011  0.00%     -    0s
+     0     0 infeasible    0         5.93011    5.93011  0.00%     -    0s
+
+Cutting planes:
+  StrongCG: 2
+
+Explored 1 nodes (1683 simplex iterations) in 0.15 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 7: 5.93011 6.10012 6.46011 ... 33.7503
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 5.930113920000e+00, best bound 5.930113920000e+00, gap 0.0000%
+Optimize a model with 1405 rows, 1333 columns and 6516 nonzeros
+Variable types: 1 continuous, 1332 integer (1332 binary)
+Coefficient statistics:
+  Matrix range     [9e-01, 1e+05]
+  Objective range  [9e-07, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 3e+05]
+Presolve time: 0.01s
+Presolved: 1405 rows, 1333 columns, 6516 nonzeros
+Variable types: 0 continuous, 1333 integer (1332 binary)
+Found heuristic solution: objective 33.7402298
+Found heuristic solution: objective 28.7603216
+Found heuristic solution: objective 25.9803577
+
+Root relaxation: objective 3.452105e+00, 602 iterations, 0.02 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    3.45211    0  231   25.98036    3.45211  86.7%     -    0s
+H    0     0                      12.9701495    3.45211  73.4%     -    0s
+H    0     0                      11.6601495    3.45211  70.4%     -    0s
+H    0     0                      10.1801451    3.45211  66.1%     -    0s
+H    0     0                      10.1801334    3.45211  66.1%     -    0s
+     0     0    3.88932    0  195   10.18013    3.88932  61.8%     -    0s
+     0     0    4.36113    0  193   10.18013    4.36113  57.2%     -    0s
+     0     0    4.59043    0  181   10.18013    4.59043  54.9%     -    0s
+H    0     0                       9.3501323    4.59043  50.9%     -    0s
+     0     0    4.62445    0  159    9.35013    4.62445  50.5%     -    0s
+H    0     0                       8.6001439    4.62445  46.2%     -    0s
+H    0     0                       8.6001385    4.62445  46.2%     -    0s
+     0     0    4.64568    0  162    8.60014    4.64568  46.0%     -    0s
+H    0     0                       8.0901385    4.64568  42.6%     -    0s
+     0     0    4.78430    0  156    8.09014    4.78430  40.9%     -    0s
+     0     0    4.79972    0  156    8.09014    4.79972  40.7%     -    0s
+     0     0    4.80759    0  139    8.09014    4.80759  40.6%     -    0s
+     0     0    4.82657    0  146    8.09014    4.82657  40.3%     -    0s
+     0     0    4.91282    0  138    8.09014    4.91282  39.3%     -    0s
+     0     0    4.92101    0  151    8.09014    4.92101  39.2%     -    0s
+     0     0    4.92109    0  144    8.09014    4.92109  39.2%     -    0s
+     0     0    5.04304    0  122    8.09014    5.04304  37.7%     -    0s
+     0     0    5.05011    0  115    8.09014    5.05011  37.6%     -    0s
+     0     0    5.11197    0  152    8.09014    5.11197  36.8%     -    0s
+     0     0    5.11197    0  154    8.09014    5.11197  36.8%     -    0s
+     0     0    5.13695    0  175    8.09014    5.13695  36.5%     -    0s
+     0     0    5.14011    0  173    8.09014    5.14011  36.5%     -    0s
+     0     0    5.14011    0  167    8.09014    5.14011  36.5%     -    0s
+     0     0    5.14652    0  192    8.09014    5.14652  36.4%     -    0s
+H    0     0                       6.8301222    5.14652  24.6%     -    0s
+     0     0    5.15011    0  154    6.83012    5.15011  24.6%     -    0s
+     0     0    5.16031    0  160    6.83012    5.16031  24.4%     -    0s
+     0     0    5.18062    0  187    6.83012    5.18062  24.2%     -    0s
+H    0     0                       6.7301179    5.18612  22.9%     -    0s
+     0     0    5.24755    0  120    6.73012    5.24755  22.0%     -    0s
+     0     0    5.25011    0  136    6.73012    5.25011  22.0%     -    0s
+     0     0    5.27875    0  180    6.73012    5.27875  21.6%     -    0s
+     0     0    5.28011    0  149    6.73012    5.28011  21.5%     -    0s
+     0     0    5.30618    0  201    6.73012    5.30618  21.2%     -    0s
+     0     0    5.31010    0  103    6.73012    5.31010  21.1%     -    0s
+     0     0    5.31011    0   84    6.73012    5.31011  21.1%     -    0s
+     0     0    5.31011    0   76    6.73012    5.31011  21.1%     -    0s
+     0     0    5.31337    0  183    6.73012    5.31337  21.1%     -    0s
+     0     0    5.32010    0  147    6.73012    5.32010  21.0%     -    0s
+     0     0    5.32010    0  124    6.73012    5.32010  21.0%     -    0s
+H    0     0                       6.7301122    5.32010  21.0%     -    0s
+     0     0    5.32444    0  167    6.73011    5.32444  20.9%     -    0s
+     0     0    5.33204    0  179    6.73011    5.33204  20.8%     -    0s
+     0     0    5.34011    0  161    6.73011    5.34011  20.7%     -    0s
+     0     0    5.35967    0  157    6.73011    5.35967  20.4%     -    0s
+     0     0    5.36432    0  131    6.73011    5.36432  20.3%     -    0s
+     0     0    5.37053    0  185    6.73011    5.37053  20.2%     -    0s
+     0     0    5.37267    0  163    6.73011    5.37267  20.2%     -    0s
+     0     0    5.38164    0  171    6.73011    5.38164  20.0%     -    0s
+     0     0    5.39010    0  133    6.73011    5.39010  19.9%     -    0s
+     0     0    5.39622    0  154    6.73011    5.39622  19.8%     -    0s
+     0     0    5.41162    0  159    6.73011    5.41162  19.6%     -    0s
+     0     0    5.43240    0  166    6.73011    5.43240  19.3%     -    0s
+     0     0    5.44010    0   80    6.73011    5.44010  19.2%     -    0s
+     0     2    5.44010    0   80    6.73011    5.44010  19.2%     -    0s
+
+Cutting planes:
+  Gomory: 2
+  Cover: 1
+  GUB cover: 1
+  Inf proof: 11
+  Zero half: 1
+
+Explored 4358 nodes (370059 simplex iterations) in 4.14 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 10: 6.73011 6.73012 6.83012 ... 11.6601
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.730112170000e+00, best bound 6.730112170000e+00, gap 0.0000%
+Optimize a model with 77 rows, 181 columns and 571 nonzeros
+Variable types: 1 continuous, 180 integer (180 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+05]
+  Objective range  [1e-06, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 3e+05]
+Found heuristic solution: objective 28.7703668
+Presolve time: 0.00s
+Presolved: 77 rows, 181 columns, 491 nonzeros
+Found heuristic solution: objective 28.7602750
+Variable types: 0 continuous, 181 integer (180 binary)
+
+Root relaxation: objective 9.210174e+00, 54 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    9.21017    0    4   28.76027    9.21017  68.0%     -    0s
+H    0     0                      11.9701754    9.21017  23.1%     -    0s
+H    0     0                      11.9501654    9.21017  22.9%     -    0s
+H    0     0                      11.7501685    9.21017  21.6%     -    0s
+H    0     0                       9.2101546    9.21015  0.00%     -    0s
+
+Cutting planes:
+  Gomory: 1
+  Cover: 3
+
+Explored 1 nodes (54 simplex iterations) in 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 7: 9.21015 11.7502 11.9502 ... 28.7804
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 9.210154590000e+00, best bound 9.210154590000e+00, gap 0.0000%
+Optimize a model with 1405 rows, 1333 columns and 6516 nonzeros
+Variable types: 1 continuous, 1332 integer (1332 binary)
+Coefficient statistics:
+  Matrix range     [9e-01, 1e+05]
+  Objective range  [9e-07, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 3e+05]
+Presolve time: 0.01s
+Presolved: 1405 rows, 1333 columns, 6516 nonzeros
+Variable types: 0 continuous, 1333 integer (1332 binary)
+Found heuristic solution: objective 33.7402298
+Found heuristic solution: objective 28.7603216
+Found heuristic solution: objective 25.9803577
+
+Root relaxation: objective 3.452105e+00, 602 iterations, 0.02 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    3.45211    0  231   25.98036    3.45211  86.7%     -    0s
+H    0     0                      12.9701495    3.45211  73.4%     -    0s
+H    0     0                      11.6601495    3.45211  70.4%     -    0s
+H    0     0                      10.1801451    3.45211  66.1%     -    0s
+H    0     0                      10.1801334    3.45211  66.1%     -    0s
+     0     0    3.88932    0  195   10.18013    3.88932  61.8%     -    0s
+     0     0    4.36113    0  193   10.18013    4.36113  57.2%     -    0s
+     0     0    4.59043    0  181   10.18013    4.59043  54.9%     -    0s
+H    0     0                       9.3501323    4.59043  50.9%     -    0s
+     0     0    4.62445    0  159    9.35013    4.62445  50.5%     -    0s
+H    0     0                       8.6001439    4.62445  46.2%     -    0s
+H    0     0                       8.6001385    4.62445  46.2%     -    0s
+     0     0    4.64568    0  162    8.60014    4.64568  46.0%     -    0s
+H    0     0                       8.0901385    4.64568  42.6%     -    0s
+     0     0    4.78430    0  156    8.09014    4.78430  40.9%     -    0s
+     0     0    4.79972    0  156    8.09014    4.79972  40.7%     -    0s
+     0     0    4.80759    0  139    8.09014    4.80759  40.6%     -    0s
+     0     0    4.82657    0  146    8.09014    4.82657  40.3%     -    0s
+     0     0    4.91282    0  138    8.09014    4.91282  39.3%     -    0s
+     0     0    4.92101    0  151    8.09014    4.92101  39.2%     -    0s
+     0     0    4.92109    0  144    8.09014    4.92109  39.2%     -    0s
+     0     0    5.04304    0  122    8.09014    5.04304  37.7%     -    0s
+     0     0    5.05011    0  115    8.09014    5.05011  37.6%     -    0s
+     0     0    5.11197    0  152    8.09014    5.11197  36.8%     -    0s
+     0     0    5.11197    0  154    8.09014    5.11197  36.8%     -    0s
+     0     0    5.13695    0  175    8.09014    5.13695  36.5%     -    0s
+     0     0    5.14011    0  173    8.09014    5.14011  36.5%     -    0s
+     0     0    5.14011    0  167    8.09014    5.14011  36.5%     -    0s
+     0     0    5.14652    0  192    8.09014    5.14652  36.4%     -    0s
+H    0     0                       6.8301222    5.14652  24.6%     -    0s
+     0     0    5.15011    0  154    6.83012    5.15011  24.6%     -    0s
+     0     0    5.16031    0  160    6.83012    5.16031  24.4%     -    0s
+     0     0    5.18062    0  187    6.83012    5.18062  24.2%     -    0s
+H    0     0                       6.7301179    5.18612  22.9%     -    0s
+     0     0    5.24755    0  120    6.73012    5.24755  22.0%     -    0s
+     0     0    5.25011    0  136    6.73012    5.25011  22.0%     -    0s
+     0     0    5.27875    0  180    6.73012    5.27875  21.6%     -    0s
+     0     0    5.28011    0  149    6.73012    5.28011  21.5%     -    0s
+     0     0    5.30618    0  201    6.73012    5.30618  21.2%     -    0s
+     0     0    5.31010    0  103    6.73012    5.31010  21.1%     -    0s
+     0     0    5.31011    0   84    6.73012    5.31011  21.1%     -    0s
+     0     0    5.31011    0   76    6.73012    5.31011  21.1%     -    0s
+     0     0    5.31337    0  183    6.73012    5.31337  21.1%     -    0s
+     0     0    5.32010    0  147    6.73012    5.32010  21.0%     -    0s
+     0     0    5.32010    0  124    6.73012    5.32010  21.0%     -    0s
+H    0     0                       6.7301122    5.32010  21.0%     -    0s
+     0     0    5.32444    0  167    6.73011    5.32444  20.9%     -    0s
+     0     0    5.33204    0  179    6.73011    5.33204  20.8%     -    0s
+     0     0    5.34011    0  161    6.73011    5.34011  20.7%     -    0s
+     0     0    5.35967    0  157    6.73011    5.35967  20.4%     -    0s
+     0     0    5.36432    0  131    6.73011    5.36432  20.3%     -    0s
+     0     0    5.37053    0  185    6.73011    5.37053  20.2%     -    0s
+     0     0    5.37267    0  163    6.73011    5.37267  20.2%     -    0s
+     0     0    5.38164    0  171    6.73011    5.38164  20.0%     -    0s
+     0     0    5.39010    0  133    6.73011    5.39010  19.9%     -    0s
+     0     0    5.39622    0  154    6.73011    5.39622  19.8%     -    0s
+     0     0    5.41162    0  159    6.73011    5.41162  19.6%     -    0s
+     0     0    5.43240    0  166    6.73011    5.43240  19.3%     -    0s
+     0     0    5.44010    0   80    6.73011    5.44010  19.2%     -    0s
+     0     2    5.44010    0   80    6.73011    5.44010  19.2%     -    0s
+
+Cutting planes:
+  Gomory: 2
+  Cover: 1
+  GUB cover: 1
+  Inf proof: 11
+  Zero half: 1
+
+Explored 4358 nodes (370059 simplex iterations) in 3.90 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 10: 6.73011 6.73012 6.83012 ... 11.6601
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.730112170000e+00, best bound 6.730112170000e+00, gap 0.0000%
+Optimize a model with 77 rows, 181 columns and 571 nonzeros
+Variable types: 1 continuous, 180 integer (180 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+05]
+  Objective range  [1e-06, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 3e+05]
+Found heuristic solution: objective 28.7704660
+Presolve time: 0.00s
+Presolved: 77 rows, 181 columns, 514 nonzeros
+Found heuristic solution: objective 28.7602794
+Variable types: 0 continuous, 181 integer (180 binary)
+
+Root relaxation: objective 6.730131e+00, 69 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    6.73013    0    6   28.76028    6.73013  76.6%     -    0s
+H    0     0                      16.4501285    6.73013  59.1%     -    0s
+H    0     0                      14.2501357    6.73013  52.8%     -    0s
+H    0     0                      13.5301307    6.73013  50.3%     -    0s
+H    0     0                       6.7301201    6.73012  0.00%     -    0s
+
+Cutting planes:
+  Gomory: 1
+  Cover: 3
+
+Explored 1 nodes (69 simplex iterations) in 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 7: 6.73012 13.5301 14.2501 ... 28.7805
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.730120110000e+00, best bound 6.730120110000e+00, gap 0.0000%
+Optimize a model with 76 rows, 145 columns and 464 nonzeros
+Variable types: 1 continuous, 144 integer (144 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+05]
+  Objective range  [1e-06, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 4e+05]
+Found heuristic solution: objective 25.4804775
+Presolve removed 0 rows and 1 columns
+Presolve time: 0.00s
+Presolved: 76 rows, 144 columns, 423 nonzeros
+Variable types: 0 continuous, 144 integer (143 binary)
+
+Root relaxation: objective 5.930117e+00, 60 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    5.93012    0    2   25.48048    5.93012  76.7%     -    0s
+H    0     0                       5.9301139    5.93011  0.00%     -    0s
+
+Explored 1 nodes (60 simplex iterations) in 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 5.93011 25.4805 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 5.930113920000e+00, best bound 5.930113920000e+00, gap 0.0000%
+Optimize a model with 75 rows, 109 columns and 357 nonzeros
+Variable types: 1 continuous, 108 integer (108 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+05]
+  Objective range  [1e-06, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 6e+05]
+Found heuristic solution: objective 24.9704033
+Presolve removed 1 rows and 2 columns
+Presolve time: 0.00s
+Presolved: 74 rows, 107 columns, 316 nonzeros
+Variable types: 0 continuous, 107 integer (106 binary)
+
+Root relaxation: objective 6.810131e+00, 51 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    6.81013    0    2   24.97040    6.81013  72.7%     -    0s
+H    0     0                      14.1401395    6.81013  51.8%     -    0s
+H    0     0                       6.8101320    6.81013  0.00%     -    0s
+
+Explored 1 nodes (51 simplex iterations) in 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 6.81013 14.1401 24.9704 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.810132010000e+00, best bound 6.810131346491e+00, gap 0.0000%
+Optimize a model with 75 rows, 109 columns and 357 nonzeros
+Variable types: 1 continuous, 108 integer (108 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+05]
+  Objective range  [1e-06, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 6e+05]
+Found heuristic solution: objective 24.9704033
+Presolve removed 1 rows and 2 columns
+Presolve time: 0.00s
+Presolved: 74 rows, 107 columns, 316 nonzeros
+Variable types: 0 continuous, 107 integer (106 binary)
+
+Root relaxation: objective 6.810131e+00, 51 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    6.81013    0    2   24.97040    6.81013  72.7%     -    0s
+H    0     0                      14.1401395    6.81013  51.8%     -    0s
+H    0     0                       6.8101320    6.81013  0.00%     -    0s
+
+Explored 1 nodes (51 simplex iterations) in 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 6.81013 14.1401 24.9704 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.810132010000e+00, best bound 6.810131346491e+00, gap 0.0000%

@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import re
 
-#from gurobipy import *
+from gurobipy import *
 import numpy as np
 
 
-k=3
+k=5
 #recuperations des populations des villes 
 f=open("populations92.txt", "r")
 pop = []
 while True:
-	line = f.readline()
-	if not line:
-		break
-	match = re.search('([0-9]+)',line)
-	pop.append(float(match.group().rstrip("\n\r")))
-	
+    line = f.readline()
+    if not line:
+        break
+    match = re.search('([0-9]+)',line)
+    pop.append(float(match.group().rstrip("\n\r")))
+    
 f.close()
 
 n=len(pop)
@@ -40,7 +41,7 @@ f.close()
 # read all lines at once
 #lines = list(f)
 # Range of plants and warehouses
-nbcont=5*n+1
+nbcont=n**2+3*n+1
 nbvar=n**2+n+1
 lignes = range(nbcont)
 colonnes = range(nbvar)
@@ -55,7 +56,7 @@ for y in range(0,n**2,n):
     l2=[]
     for x in range(nbvar):
         if x >= y and x < y+n:
-            l2.insert(x,1)		
+            l2.insert(x,1)        
         else:
             l2.insert(x,0)
 
@@ -67,68 +68,83 @@ print(len(matrice_contraintes[0]))
 co_pop = []
 l2=[]
 
-for i in range(k):
+for i in range(n):
     l2=[]
     p=0
     for j in pop:
-        l2 = l2 + np.zeros(k).tolist()
-        l2[i+k*p]=j
+        l2 = l2 + np.zeros(n,dtype=np.int).tolist()
+        l2[i+n*p]=j
         p=p+1
-    l2.append(0)
+    l2.extend(np.zeros(n+1).tolist())
     co_pop.append(l2)
 
-#Les contraintes concernant le nombre des secteurs
-su = np.ones(n).tolist()
-su2 = np.ones(nbvar - n).tolist()
-su.extend(su2)
+#print(co_pop)
 
+#La contrainte concernant le nombre des secteurs j1 + j2 + ... jn = k
+su = np.ones(n,).tolist()
+su2 = np.zeros(nbvar - n).tolist()
+su2.extend(su)
+ 
 
-'''
 #Les contraintes concernant le fait que xij <= ja
 l3 = []
 l2 = []
 for y in range(0,n**2):
-	l2=[]
-	for x in range(nbvar):
-		if x == y :
-			l2.insert(x,1)
-		else:
-			l2.insert(x,0)
-	l3.append(l2)
+    l2=[]
+    for x in range(nbvar):
+        if x == y :
+            l2.insert(x,1)
+        else:
+            if x == n**2 + 1 + y%36 :
+                l2.insert(x,-1)
+            else:
+                 l2.insert(x,0)
+    l3.append(l2)
 
-print(l3[1])
-
+#print(l3)
+   
 
 
 #Les contraintes de la question 2
+
+'''
 ci = []
 
 for j in range(n):
-	for i in cities:
-		ci.append(dis[j][i])
+    for i in cities:
+        ci.append(dis[j][i])
 
 #print(len(c))
-
-m=[]
-l2 =[]
-
-
-for i in range (0,len(ci),k):
-	l2 = []	
-	for z in ci[0:i] :
-		l2.append(0)
-	for j in ci[i:i+k]:
-		l2.append(j)
-	for e in ci[i+k:len(ci)] :
-		l2.append(0)
-	l2.append(-1)
-	m.append(l2)
-
-#print(m)
-
 '''
-#matrice_contraintes.extend(co_pop)
-#matrice_contraintes.extend(m)
+m=[]
+l5 =[]
+
+for i in range (len(dis)):
+    for j in range(len(dis)):
+        l5.append(dis[i][j])
+
+
+
+l2 = []
+for i in range (0,len(l5),n):
+    l2 = []    
+    for z in l5[0:i] :
+        l2.append(0)
+    for j in l5[i:i+n]:
+        l2.append(j)
+    for e in l5[i+n:len(l5)] :
+        l2.append(0)
+    l2.append(-1)
+    l2.extend(np.zeros(n).tolist())
+    m.append(l2)
+
+ #print(m)
+
+
+matrice_contraintes.extend(co_pop)
+matrice_contraintes.append(su2)
+matrice_contraintes.extend(l3)
+matrice_contraintes.extend(m)
 
 #print(matrice_contraintes)
 #print(len(matrice_contraintes[0]))
@@ -140,73 +156,91 @@ b = np.ones(n).tolist()
 #La somme des populations des villes 
 s = 0
 for i in pop:
-	s = s + i
+    s = s + i
 
 landa = (1 + alpha) / k 
 #print(landa)
 
-for i in range(k):
-    b.append(landa * s)
-
 for i in range(n):
-    b.append(0)
+    b.append(landa * s)
+  
+b.append(k)
 
-b.append(1) #contrainte de nombres de villes 
+b2 = np.zeros(n**2+n).tolist() #contrainte 4 et 5
 
-#print(len(b))
+b.extend(b2)
+
+
+
+#b.append(1) #contrainte de nombres de villes 
+
+#print(b)
+
 
 ######################FONCTION OBJECTIVE################################
-'''
+
 c = []
 epsilon=1e-6
  
 for j in range(n):
-    for i in cities:
+    for i in range(n):
         c.append(epsilon*dis[j][i])
 c.append(1)
+for i in range(n):
+        c.append(0)
 
 #print(c)
 
-'''
 
-'''
+
+
 ###############################GUROBI####################################
 
-m=Model()   
+m3=Model()   
 
         
 # declaration variables de decision
 x = []
 for i in range(n):
-    for j in cities:
-  #    for j in range(k):
-        x.append(m.addVar(vtype=GRB.BINARY
+    for j in range(n):
+        x.append(m3.addVar(vtype=GRB.BINARY
                           , lb=0, name="x%d_%d" % (i+1,j+1)))
-x.append((m.addVar(vtype=GRB.CONTINUOUS
+x.append((m3.addVar(vtype=GRB.CONTINUOUS
                           , lb=0, name="g")))
+for j in range(n):
+        x.append(m3.addVar(vtype=GRB.BINARY
+                          , lb=0, name="j%d" % (j+1)))
+        
 # maj du modele pour integrer les nouvelles variables
-m.update()
+m3.update()
 obj = LinExpr();
 obj =0
 for j in colonnes:
     obj += c[j] * x[j]
       
 # definition de l'objectif
-m.setObjective(obj,GRB.MINIMIZE)
+m3.setObjective(obj,GRB.MINIMIZE)
 
 # Definition des contraintes
 for i in range(0,n):
-    m.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) == b[i], "Contrainte%d" % i)
-    #print(i,j)
+    m3.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) == b[i], "Contrainte%d" % i)
 
-for i in range(n,n+k):
-    m.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) <= b[i], "Contrainte%d" % i)
+for i in range(n,2*n):
+    m3.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) <= b[i], "Contrainte%d" % i)
+
+  
+for i in range(2*n,2*n + 1):
+    print(i)
+    m3.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) == b[i], "Contrainte%d" % i)
+
+for i in range(2*n + 1,2*n + 1+n**2):
+    m3.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) <= b[i], "Contrainte%d" % i)
     
-for i in range(n+k,n*2+k):
-    m.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) <= b[i], "Contrainte%d" % i)
+for i in range(2*n + 1+n**2,3*n + 1+n**2):
+    m3.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) <= b[i], "Contrainte%d" % i)
     
 # Resolution
-m.optimize()
+m3.optimize()
 
 
 print("")                
@@ -218,14 +252,19 @@ print('Solution optimale:')
 
 k=0
 for i in range(n):
-    for j in cities:
+    for j in range(n):
         print('x%d_%d'%(i+1,j+1), '=', x[k].x)
-        k=k+1;
+        k=k+1
 print('g', '=', x[k].x)
+k=k+1
+for j in range(n):
+        print('j%d'%(j+1), '=', x[k].x)
+        k=k+1
         
 print("")
-print('Valeur de la fonction objectif :', m.objVal) 
+print('Valeur de la fonction objectif :', m3.objVal) 
 
+"""
 ###########################MATTHEWS' PARSING CODE###############################
 def parseCoord():
     f = open("coordvilles92.txt", "r")
@@ -248,4 +287,5 @@ exec(open("projet1(1).py").read())
 PE=1-Sat1/Sat
 print("PE",'=',PE)
 
-#m =m.write("qa.lp")'''
+#m =m.write("qa.lp")
+"""

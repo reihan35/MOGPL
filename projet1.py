@@ -10,7 +10,7 @@ import re
 from gurobipy import *
 import numpy as np
 
-cities = (0,1,2)
+cities = (1,13,28)
 k=len(cities)
 
 #recuperations des populations des villes 
