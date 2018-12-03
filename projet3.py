@@ -4,6 +4,10 @@ import re
 
 from gurobipy import *
 import numpy as np
+import timeit
+import optdistr
+
+start = timeit.default_timer()
 
 
 k=5
@@ -63,7 +67,6 @@ for y in range(0,n**2,n):
 
     matrice_contraintes.append(l2)
 
-print(len(matrice_contraintes[0]))
 #Les contraintes concernant la population des villes 
 co_pop = []
 l2=[]
@@ -109,11 +112,9 @@ for y in range(0,n**2):
 
 '''
 ci = []
-
 for j in range(n):
     for i in cities:
         ci.append(dis[j][i])
-
 #print(len(c))
 '''
 m=[]
@@ -188,7 +189,7 @@ for j in range(n):
 c.append(1)
 for i in range(n):
         c.append(0)
-
+cici=c
 #print(c)
 
 
@@ -230,7 +231,6 @@ for i in range(n,2*n):
 
   
 for i in range(2*n,2*n + 1):
-    print(i)
     m3.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) == b[i], "Contrainte%d" % i)
 
 for i in range(2*n + 1,2*n + 1+n**2):
@@ -264,28 +264,41 @@ for j in range(n):
 print("")
 print('Valeur de la fonction objectif :', m3.objVal) 
 
+m5 =m3.write("qopt.mps")
+
 """
 ###########################MATTHEWS' PARSING CODE###############################
 def parseCoord():
     f = open("coordvilles92.txt", "r")
     my_text = f.readlines()
     return map(lambda coords: map(lambda coord : int(coord), re.findall(r'\d+', coords)), my_text)
-
-
+    """
 ###########################PE PART###############################
-
 Sat=0
 Satv=[]
-for j in range(nbvar-1):
+for j in range(n**2):
     Sat+= 1/epsilon*c[j] * x[j].x
     Satv.append(1/epsilon*c[j] * x[j].x)
 SatM=Sat/n
 MinSat=max(Satv)
 
+activehubs=[]
+for j in range(nbvar-n,nbvar):
+    if x[j].x==1:
+        activehubs.append(j-nbvar+n)
+print(activehubs)        
+        
 
-exec(open("projet1(1).py").read())
+#exec(open("projet1(1).py").read())
+(Sat1,Satv1)=optdistr1(activehubs)
 PE=1-Sat1/Sat
 print("PE",'=',PE)
+#Sat=1e6*(m1.objVal-x[nbvar-1].x)
+#PEv.append(round(1-Sat1/Sat,6))
+#gin.append(round(gini(Satv1),6))
+#ginn.append(round(gini(Satv1),6))
 
-#m =m.write("qa.lp")
-"""
+
+stop = timeit.default_timer()
+
+print('Time: ', stop - start) 
