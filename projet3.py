@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import re
 
-from gurobipy import *
+#from gurobipy import *
 import numpy as np
 
 
@@ -19,6 +19,8 @@ while True:
 f.close()
 
 n=len(pop)
+
+
 #recuperation des distances entre villes
 f = open("distances92.txt", "r")
 dis = []
@@ -34,19 +36,6 @@ while True:
         break
 f.close()
 
-#recuperations des populations des villes 
-f=open("populations92.txt", "r")
-pop = []
-while True:
-	line = f.readline()
-	if not line:
-		break
-	match = re.search('([0-9]+)',line)
-	pop.append(float(match.group().rstrip("\n\r")))
-	
-f.close()
-
-
 #print(dis)
 # read all lines at once
 #lines = list(f)
@@ -58,7 +47,7 @@ colonnes = range(nbvar)
 
 ########################LES CONTRAINTES#############################
 
-#Les contraintes conceranrt le fait qu'une ville n’appartient qu’a un unique secteur et les secteurs forment une partition des n ville
+#Les contraintes concernant le fait qu'une ville n’appartient qu’a un unique secteur et les secteurs forment une partition des n ville
 
 l2=[]
 matrice_contraintes=[]
@@ -73,6 +62,7 @@ for y in range(0,n**2,n):
 
     matrice_contraintes.append(l2)
 
+print(len(matrice_contraintes[0]))
 #Les contraintes concernant la population des villes 
 co_pop = []
 l2=[]
@@ -86,6 +76,29 @@ for i in range(k):
         p=p+1
     l2.append(0)
     co_pop.append(l2)
+
+#Les contraintes concernant le nombre des secteurs
+su = np.ones(n).tolist()
+su2 = np.ones(nbvar - n).tolist()
+su.extend(su2)
+
+
+'''
+#Les contraintes concernant le fait que xij <= ja
+l3 = []
+l2 = []
+for y in range(0,n**2):
+	l2=[]
+	for x in range(nbvar):
+		if x == y :
+			l2.insert(x,1)
+		else:
+			l2.insert(x,0)
+	l3.append(l2)
+
+print(l3[1])
+
+
 
 #Les contraintes de la question 2
 ci = []
@@ -113,11 +126,11 @@ for i in range (0,len(ci),k):
 
 #print(m)
 
+'''
+#matrice_contraintes.extend(co_pop)
+#matrice_contraintes.extend(m)
 
-matrice_contraintes.extend(co_pop)
-matrice_contraintes.extend(m)
-
-#print(len(matrice_contraintes))
+#print(matrice_contraintes)
 #print(len(matrice_contraintes[0]))
 
 ###########################SECONDE MEMBRE###############################
@@ -137,9 +150,13 @@ for i in range(k):
 
 for i in range(n):
     b.append(0)
+
+b.append(1) #contrainte de nombres de villes 
+
 #print(len(b))
 
 ######################FONCTION OBJECTIVE################################
+'''
 c = []
 epsilon=1e-6
  
@@ -150,6 +167,9 @@ c.append(1)
 
 #print(c)
 
+'''
+
+'''
 ###############################GUROBI####################################
 
 m=Model()   
@@ -228,4 +248,4 @@ exec(open("projet1(1).py").read())
 PE=1-Sat1/Sat
 print("PE",'=',PE)
 
-#m =m.write("qa.lp")
+#m =m.write("qa.lp")'''

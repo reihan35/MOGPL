@@ -7,7 +7,7 @@ Created on Fri Nov 23 17:19:23 2018
 """
 import re
 
-from gurobipy import *
+#from gurobipy import *
 import numpy as np
 
 cities = (0,1,2)
@@ -80,6 +80,7 @@ for y in range(0,n*k,k):
 
     matrice_contraintes.append(l2)
 
+print(matrice_contraintes)
 
 #Les contraintes concernant la population des villes 
 co_pop = []
@@ -119,14 +120,14 @@ for i in range (0,len(ci),k):
 	l2.append(-1)
 	m.append(l2)
 
-print(m)
+#print(m)
 
 
 matrice_contraintes.extend(co_pop)
 matrice_contraintes.extend(m)
 
-print(len(matrice_contraintes))
-print(len(matrice_contraintes[0]))
+#print(matrice_contraintes)
+#print(len(matrice_contraintes[0]))
 
 ###########################SECONDE MEMBRE###############################
 alpha = 0.1
@@ -146,7 +147,7 @@ for i in range(k):
 for i in range(n):
     b.append(0)
 print(len(b))
-
+'''
 ######################FONCTION OBJECTIVE################################
 c = []
 epsilon=1e-6
@@ -237,4 +238,4 @@ PE=1-Sat1/Sat
 print("PE",'=',PE)
 
 #ma =m1.write("qa.lp")
-"""
+'''
