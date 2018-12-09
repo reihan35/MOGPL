@@ -1,12 +1,16 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import re
 
 from gurobipy import *
 import numpy as np
+import timeit
+import optdistr
+import matplotlib.pyplot as plt
+import pandas as pd
+
+start = timeit.default_timer()
 
 
-k=5
+k=9
 #recuperations des populations des villes 
 f=open("populations92.txt", "r")
 pop = []
@@ -63,7 +67,6 @@ for y in range(0,n**2,n):
 
     matrice_contraintes.append(l2)
 
-print(len(matrice_contraintes[0]))
 #Les contraintes concernant la population des villes 
 co_pop = []
 l2=[]
@@ -109,11 +112,9 @@ for y in range(0,n**2):
 
 '''
 ci = []
-
 for j in range(n):
     for i in cities:
         ci.append(dis[j][i])
-
 #print(len(c))
 '''
 m=[]
@@ -188,7 +189,7 @@ for j in range(n):
 c.append(1)
 for i in range(n):
         c.append(0)
-
+cici=c
 #print(c)
 
 
@@ -230,7 +231,6 @@ for i in range(n,2*n):
 
   
 for i in range(2*n,2*n + 1):
-    print(i)
     m3.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) == b[i], "Contrainte%d" % i)
 
 for i in range(2*n + 1,2*n + 1+n**2):
@@ -240,7 +240,9 @@ for i in range(2*n + 1+n**2,3*n + 1+n**2):
     m3.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) <= b[i], "Contrainte%d" % i)
     
 # Resolution
+#m3.Params.BranchDir= 1
 m3.optimize()
+#ImproveStartGap=0.9
 
 
 print("")                
@@ -249,7 +251,7 @@ print('Solution optimale:')
 
 #for i in range(36*k):
     #print('x%d'%(i+1), '=', x[i].x)
-
+"""
 k=0
 for i in range(n):
     for j in range(n):
@@ -263,29 +265,69 @@ for j in range(n):
         
 print("")
 print('Valeur de la fonction objectif :', m3.objVal) 
-
 """
-###########################MATTHEWS' PARSING CODE###############################
-def parseCoord():
-    f = open("coordvilles92.txt", "r")
-    my_text = f.readlines()
-    return map(lambda coords: map(lambda coord : int(coord), re.findall(r'\d+', coords)), my_text)
+#m5 =m3.write("qopt.mps")
+
+data = pd.read_csv('coordvilles92.txt', header=None)
+data.columns = ["Villes", "x", "y"]
+
+HdS=plt.imread("92.png")
+fig, ax = plt.subplots()
+ax.imshow(HdS)
+
+def connectpoints(x,y,p1,p2):
+    x1, x2 = x[p1], x[p2]
+    y1, y2 = y[p1], y[p2]
+    plt.plot([x1,x2],[y1,y2],'k-')
 
 
+k=0
+for i in range(n):
+    for j in range(n):
+        if x[k].x==1:
+            plt.plot(data["x"][j], data["y"][j], 'ro-')    
+            connectpoints(data["x"],data["y"],i,j)
+        k=k+1
 ###########################PE PART###############################
 
 Sat=0
 Satv=[]
-for j in range(nbvar-1):
+Sattest=[]
+for j in range(n**2):
     Sat+= 1/epsilon*c[j] * x[j].x
-    Satv.append(1/epsilon*c[j] * x[j].x)
+    Sattest.append(Sat)
+    if x[j].x==1:
+        Satv.append(1/epsilon*c[j] * x[j].x)
 SatM=Sat/n
 MinSat=max(Satv)
+ind=[i for i, j in enumerate(Satv) if j == MinSat]
+print(ind)
 
+activehubs=[]
+for j in range(nbvar-n,nbvar):
+    if x[j].x==1:
+        activehubs.append(j-nbvar+n)
+print(activehubs)        
+        
 
-exec(open("projet1(1).py").read())
+(Sat1,Satv1)=optdistr1(activehubs)
 PE=1-Sat1/Sat
 print("PE",'=',PE)
+#Sat=1e6*(m1.objVal-x[nbvar-1].x)
+#PEv.append(round(1-Sat1/Sat,6))
+#gin.append(round(gini(Satv1),6))
+#ginn.append(round(gini(Satv1),6))
 
-#m =m.write("qa.lp")
-"""
+
+
+test=[]
+k=0
+for i in range(n):
+    for j in range (n):
+        if j==9 or j==26:
+            test.append(c[k])
+        k+=1
+
+stop = timeit.default_timer()
+
+print('Time: ', stop - start) 
