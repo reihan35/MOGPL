@@ -9,8 +9,11 @@ import re
 
 from gurobipy import *
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
-cities = (1,13,28)
+cities = (12,13,15,16,28)
+#cities=(0,1,2)
 k=len(cities)
 
 #recuperations des populations des villes 
@@ -44,7 +47,7 @@ f.close()
 
 
 
-print(dis)
+#print(dis)
 # read all lines at once
 #lines = list(f)
 # Range of plants and warehouses
@@ -89,7 +92,7 @@ for i in range(k):
 
 matrice_contraintes.extend(co_pop)
 
-print(matrice_contraintes)
+#print(matrice_contraintes)
 
 ###########################SECONDE MEMBRE###############################
 alpha = 0.1
@@ -101,11 +104,10 @@ for i in pop:
 	s = s + i
 
 landa = (1 + alpha) / k 
-print(landa)
+#print(landa)
 
 for i in range(k):
     b.append(landa * s)
-print(b)
 #print(b)
 
 ######################FONCTION OBJECTIVE################################
@@ -115,7 +117,7 @@ for j in range(n):
     for i in cities:
         c.append(dis[j][i])
 
-print(c)
+#print(c)
 
 ###############################GUROBI####################################
 
@@ -168,12 +170,41 @@ print("")
 print('Valeur de la fonction objectif :', m.objVal) 
 
 
+data = pd.read_csv('coordvilles92.txt', header=None)
+data.columns = ["Villes", "x", "y"]
+
+HdS=plt.imread("92.png")
+fig, ax = plt.subplots()
+ax.imshow(HdS)
+
+def connectpoints(x,y,p1,p2):
+    x1, x2 = x[p1], x[p2]
+    y1, y2 = y[p1], y[p2]
+    plt.plot([x1,x2],[y1,y2],'k-')
+
+
+k=0
+for i in range(n):
+    for j in cities:
+        if x[k].x==1:
+            plt.plot(data["x"][j], data["y"][j], 'ro-')    
+            connectpoints(data["x"],data["y"],i,j)
+        k=k+1
+        
+"""
+fig, ax = plt.subplots()
+x = range(300)
+ax.imshow(HdS)
+ax.plot(x, x, '--', linewidth=5, color='firebrick')
+"""
+
 Sat1=0
 Satv1=[]
 for j in colonnes:
     Sat1+= c[j] * x[j].x
-    Satv1.append(c[j] * x[j].x)
+    if x[j].x==1:
+        Satv1.append(c[j] * x[j].x)
 SatM1=Sat1/n
 MinSat1=max(Satv1)
-
-#m =m.write("q.lp")
+ind=[i for i, j in enumerate(Satv1) if j == MinSat1]
+m =m.write("q.lp")
