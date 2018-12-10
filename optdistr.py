@@ -10,7 +10,7 @@ import re
 from gurobipy import *
 import numpy as np
 
-def optdistr1(activehubs):
+def optdistr1(activehubs,alfa):
     
     
     cities = activehubs
@@ -95,7 +95,7 @@ def optdistr1(activehubs):
     #print(matrice_contraintes)
     
     ###########################SECONDE MEMBRE###############################
-    alpha = 0.1
+    alpha = alfa
     b = np.ones(n).tolist()
     
     #La somme des populations des villes 
