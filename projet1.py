@@ -12,7 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-cities = (12,13,15,16,28)
+cities =(2,4,15,24,32)
 #cities=(0,1,2)
 k=len(cities)
 
@@ -169,9 +169,24 @@ for i in range(n):
 print("")
 print('Valeur de la fonction objectif :', m.objVal) 
 
+Sat1=0
+Satv1=[]
+for j in colonnes:
+    Sat1+= c[j] * x[j].x
+    if x[j].x==1:
+        Satv1.append(c[j] * x[j].x)
+SatM1=Sat1/n
+print("Medium Satisfaction","=",SatM1)
+MinSat1=max(Satv1)
+print("Minimum Satisfaction","=",MinSat1)
+ind=[i for i, j in enumerate(Satv1) if j == MinSat1]
+
+
+
 
 data = pd.read_csv('coordvilles92.txt', header=None)
 data.columns = ["Villes", "x", "y"]
+print(data["Villes"][ind])
 
 HdS=plt.imread("92.png")
 fig, ax = plt.subplots()
@@ -182,12 +197,12 @@ def connectpoints(x,y,p1,p2):
     y1, y2 = y[p1], y[p2]
     plt.plot([x1,x2],[y1,y2],'k-')
 
-
+plt.plot(data["x"][ind], data["y"][ind], 'bo')
 k=0
 for i in range(n):
     for j in cities:
+        plt.plot(data["x"][j], data["y"][j], 'ro-') 
         if x[k].x==1:
-            plt.plot(data["x"][j], data["y"][j], 'ro-')    
             connectpoints(data["x"],data["y"],i,j)
         k=k+1
         
@@ -198,13 +213,7 @@ ax.imshow(HdS)
 ax.plot(x, x, '--', linewidth=5, color='firebrick')
 """
 
-Sat1=0
-Satv1=[]
-for j in colonnes:
-    Sat1+= c[j] * x[j].x
-    if x[j].x==1:
-        Satv1.append(c[j] * x[j].x)
-SatM1=Sat1/n
-MinSat1=max(Satv1)
-ind=[i for i, j in enumerate(Satv1) if j == MinSat1]
+for i in cities:
+    print(data["Villes"][i])
+
 m =m.write("q.lp")
