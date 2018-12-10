@@ -265,6 +265,7 @@ print(ind)
 
 
 activehubs=cities
+#exec(open("projet1(1).py").read())
 (Sat1,Satv1)=optdistr1(activehubs)
 print(Sat)
 PE=1-Sat1/Sat
