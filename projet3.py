@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import re
 
 from gurobipy import *
@@ -12,7 +14,7 @@ import pandas as pd
 start = timeit.default_timer()
 
 
-k=9
+k=3
 #recuperations des populations des villes 
 f=open("populations92.txt", "r")
 pop = []
@@ -283,6 +285,7 @@ def connectpoints(x,y,p1,p2):
     plt.plot([x1,x2],[y1,y2],'k-')
 
 
+
 k=0
 for i in range(n):
     for j in range(n):
@@ -290,6 +293,7 @@ for i in range(n):
             plt.plot(data["x"][j], data["y"][j], 'ro-')    
             connectpoints(data["x"],data["y"],i,j)
         k=k+1
+        
 ###########################PE PART###############################
 
 Sat=0
@@ -303,7 +307,8 @@ for j in range(n**2):
 SatM=Sat/n
 MinSat=max(Satv)
 ind=[i for i, j in enumerate(Satv) if j == MinSat]
-print(ind)
+plt.plot(data["x"][ind], data["y"][ind], 'bo')
+
 
 activehubs=[]
 for j in range(nbvar-n,nbvar):
@@ -313,14 +318,13 @@ print(activehubs)
         
 
 #exec(open("projet1(1).py").read())
-(Sat1,Satv1)=optdistr1(activehubs)
+(Sat1,Satv1)=optdistr1(activehubs,alpha)
 PE=1-Sat1/Sat
 print("PE",'=',PE)
 #Sat=1e6*(m1.objVal-x[nbvar-1].x)
 #PEv.append(round(1-Sat1/Sat,6))
 #gin.append(round(gini(Satv1),6))
 #ginn.append(round(gini(Satv1),6))
-
 
 
 test=[]
@@ -331,6 +335,9 @@ for i in range(n):
             test.append(c[k])
         k+=1
 
+print(data["Villes"][ind])
+for i in activehubs:
+    print(i,data["Villes"][i])
 stop = timeit.default_timer()
 
 print('Time: ', stop - start) 
