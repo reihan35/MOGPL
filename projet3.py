@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import re
 
 from gurobipy import *
@@ -310,6 +312,7 @@ for j in range(nbvar-n,nbvar):
 print(activehubs)        
         
 
+#exec(open("projet1(1).py").read())
 (Sat1,Satv1)=optdistr1(activehubs)
 PE=1-Sat1/Sat
 print("PE",'=',PE)
@@ -331,3 +334,5 @@ for i in range(n):
 stop = timeit.default_timer()
 
 print('Time: ', stop - start) 
+
+
