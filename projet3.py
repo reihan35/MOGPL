@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import re
 
 from gurobipy import *
@@ -341,5 +339,6 @@ for i in activehubs:
 stop = timeit.default_timer()
 
 print('Time: ', stop - start) 
+
 
 
