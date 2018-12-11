@@ -13,6 +13,7 @@ start = timeit.default_timer()
 
 
 k=3
+alpha = 0.1
 #recuperations des populations des villes 
 f=open("populations92.txt", "r")
 pop = []
@@ -138,7 +139,6 @@ matrice_contraintes.extend(l3)
 matrice_contraintes.extend(m)
 
 ###########################SECONDE MEMBRE###############################
-alpha = 0.1
 b = np.ones(n).tolist()
 
 #La somme des populations des villes 
@@ -296,8 +296,8 @@ print(activehubs)
 PE=1-Sat1/Sat
 print()
 print("Satisfaction globale",'=',Sat)
-print("Medium Satisfaction","=",SatM1)
-print("Minimum Satisfaction","=",MinSat1)
+print("Medium Satisfaction","=",SatM)
+print("Minimum Satisfaction","=",MinSat)
 print("PE",'=',PE)
 
 print("Worst off:",data["Villes"][ind])
