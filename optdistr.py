@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Fri Nov 23 17:19:23 2018
@@ -179,5 +178,3 @@ def optdistr1(activehubs,alfa):
     MinSat1=max(Satv1)
     return (Sat1,Satv1)
 
-
-#m =m.write("q.lp")
