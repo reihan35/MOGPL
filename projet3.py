@@ -43,10 +43,8 @@ while True:
         break
 f.close()
 
-#print(dis)
-# read all lines at once
-#lines = list(f)
-# Range of plants and warehouses
+
+
 nbcont=n**2+3*n+1
 nbvar=n**2+n+1
 lignes = range(nbcont)
@@ -83,7 +81,6 @@ for i in range(n):
     l2.extend(np.zeros(n+1).tolist())
     co_pop.append(l2)
 
-#print(co_pop)
 
 #La contrainte concernant le nombre des secteurs j1 + j2 + ... jn = k
 su = np.ones(n,).tolist()
@@ -110,15 +107,8 @@ for y in range(0,n**2):
    
 
 
-#Les contraintes de la question 2
+# Les contraintes de la question 2
 
-'''
-ci = []
-for j in range(n):
-    for i in cities:
-        ci.append(dis[j][i])
-#print(len(c))
-'''
 m=[]
 l5 =[]
 
@@ -141,16 +131,11 @@ for i in range (0,len(l5),n):
     l2.extend(np.zeros(n).tolist())
     m.append(l2)
 
- #print(m)
-
 
 matrice_contraintes.extend(co_pop)
 matrice_contraintes.append(su2)
 matrice_contraintes.extend(l3)
 matrice_contraintes.extend(m)
-
-#print(matrice_contraintes)
-#print(len(matrice_contraintes[0]))
 
 ###########################SECONDE MEMBRE###############################
 alpha = 0.1
@@ -161,11 +146,10 @@ s = 0
 for i in pop:
     s = s + i
 
-landa = (1 + alpha) / k 
-#print(landa)
+gamma = (1 + alpha) / k 
 
 for i in range(n):
-    b.append(landa * s)
+    b.append(gamma * s)
   
 b.append(k)
 
@@ -242,17 +226,12 @@ for i in range(2*n + 1+n**2,3*n + 1+n**2):
     m3.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) <= b[i], "Contrainte%d" % i)
     
 # Resolution
-#m3.Params.BranchDir= 1
-m3.optimize()
-#ImproveStartGap=0.9
 
+m3.optimize()
 
 print("")                
 print('Solution optimale:')
 
-
-#for i in range(36*k):
-    #print('x%d'%(i+1), '=', x[i].x)
 """
 k=0
 for i in range(n):
@@ -315,15 +294,9 @@ for j in range(nbvar-n,nbvar):
 print(activehubs)        
         
 
-#exec(open("projet1(1).py").read())
 (Sat1,Satv1)=optdistr1(activehubs,alpha)
 PE=1-Sat1/Sat
 print("PE",'=',PE)
-#Sat=1e6*(m1.objVal-x[nbvar-1].x)
-#PEv.append(round(1-Sat1/Sat,6))
-#gin.append(round(gini(Satv1),6))
-#ginn.append(round(gini(Satv1),6))
-
 
 test=[]
 k=0
@@ -336,6 +309,7 @@ for i in range(n):
 print(data["Villes"][ind])
 for i in activehubs:
     print(i,data["Villes"][i])
+
 stop = timeit.default_timer()
 
 print('Time: ', stop - start) 

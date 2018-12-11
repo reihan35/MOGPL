@@ -214,6 +214,8 @@ HdS=plt.imread("92.png")
 fig, ax = plt.subplots()
 ax.imshow(HdS)
 
+#Plot
+
 def connectpoints(x,y,p1,p2):
     x1, x2 = x[p1], x[p2]
     y1, y2 = y[p1], y[p2]
@@ -244,7 +246,7 @@ print(ind)
 
 #Calcul de PE
 activehubs=cities
-(Sat1,Satv1)=optdistr1(activehubs,alpha) #on resout le programme lineaire 1 avec les memes citès 
+(Sat1,Satv1)=optdistr.optdistr1(activehubs,alpha) #on resout le programme lineaire 1 avec les memes villes 
 print(Sat)
 PE=1-Sat1/Sat #Prix de l'equitè
 print("PE",'=',PE)
