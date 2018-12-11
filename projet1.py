@@ -13,7 +13,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 cities =(2,4,15,24,32)
-#cities=(0,1,2)
 k=len(cities)
 
 #recuperations des populations des villes 
@@ -28,6 +27,7 @@ while True:
 	
 f.close()
 
+#nombre des villes
 n=len(pop)
 
 #recuperation des distances entre villes
@@ -47,10 +47,8 @@ f.close()
 
 
 
-#print(dis)
-# read all lines at once
-#lines = list(f)
-# Range of plants and warehouses
+
+# Nombre des variables et des contraintes
 nbcont=k+n
 nbvar=n*k
 lignes = range(nbcont)
@@ -58,7 +56,7 @@ colonnes = range(nbvar)
 
 ########################LES CONTRAINTES#############################
 
-#Les contraintes conceranrt le fait qu'une ville n’appartient qu’a un unique secteur et les secteurs forment une partition des n ville
+#Les contraintes concernant le fait qu'une ville n’appartient qu’a un unique secteur et les secteurs forment une partition des n villes
 
 l2=[]
 matrice_contraintes=[]
@@ -92,7 +90,6 @@ for i in range(k):
 
 matrice_contraintes.extend(co_pop)
 
-#print(matrice_contraintes)
 
 ###########################SECONDE MEMBRE###############################
 alpha = 0.1
@@ -103,12 +100,10 @@ s = 0
 for i in pop:
 	s = s + i
 
-landa = (1 + alpha) / k 
-#print(landa)
+gamma = (1 + alpha) / k 
 
 for i in range(k):
-    b.append(landa * s)
-#print(b)
+    b.append(gamma * s)
 
 ######################FONCTION OBJECTIVE################################
 c = []
@@ -117,7 +112,6 @@ for j in range(n):
     for i in cities:
         c.append(dis[j][i])
 
-#print(c)
 
 ###############################GUROBI####################################
 
@@ -128,20 +122,18 @@ m=Model()
 x = []
 for i in range(n):
     for j in cities:
-  #    for j in range(k):
         x.append(m.addVar(vtype=GRB.BINARY
-                          , lb=0, name="x%d_%d" % (i+1,j+1)))
+                          , lb=0, name="x%d_%d" % (i,j)))
 
-# maj du modele pour integrer les nouvelles variables
+# Mise a jour du modele pour integrer les nouvelles variables
 m.update()
 
 obj = LinExpr();
 obj =0
 for j in colonnes:
-    #print(i,j)
     obj += c[j] * x[j]
       
-# definition de l'objectif
+# Definition de l'objectif
 m.setObjective(obj,GRB.MINIMIZE)
 
 # Definition des contraintes
@@ -156,37 +148,42 @@ for i in range(n,n+k):
 # Resolution
 m.optimize()
 
-
+# Affichage
 print("")                
 print('Solution optimale:')
 
 k=0;
 for i in range(n):
     for j in cities:
-        print('x%d_%d'%(i+1,j+1), '=', x[k].x)
+        print('x%d_%d'%(i,j), '=', x[k].x)
         k=k+1;
         
 print("")
 print('Valeur de la fonction objectif :', m.objVal) 
 
-Sat1=0
-Satv1=[]
+
+#Satisfaction
+Sat1=0 
+Satv1=[] 
 for j in colonnes:
     Sat1+= c[j] * x[j].x
     if x[j].x==1:
         Satv1.append(c[j] * x[j].x)
-SatM1=Sat1/n
+SatM1=Sat1/n #Satsfaction moyenne
 print("Medium Satisfaction","=",SatM1)
-MinSat1=max(Satv1)
+MinSat1=max(Satv1) #Satisfaction minimum
 print("Minimum Satisfaction","=",MinSat1)
 ind=[i for i, j in enumerate(Satv1) if j == MinSat1]
 
 
 
 
+#Recuperation des coordonnees des villes
 data = pd.read_csv('coordvilles92.txt', header=None)
 data.columns = ["Villes", "x", "y"]
 print(data["Villes"][ind])
+
+#Plot
 
 HdS=plt.imread("92.png")
 fig, ax = plt.subplots()
@@ -205,15 +202,9 @@ for i in range(n):
         if x[k].x==1:
             connectpoints(data["x"],data["y"],i,j)
         k=k+1
-        
-"""
-fig, ax = plt.subplots()
-x = range(300)
-ax.imshow(HdS)
-ax.plot(x, x, '--', linewidth=5, color='firebrick')
-"""
 
 for i in cities:
     print(data["Villes"][i])
-
+#Ecriture dans un model LP
 m =m.write("q.lp")
+
