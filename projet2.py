@@ -17,12 +17,8 @@ import pandas as pd
 
 start = timeit.default_timer()
 
-#cities = (12, 15, 28, 29, 32)
-#cities=(12, 13, 15, 16, 28)
-cities=(1, 13, 28)
-#cities=(13, 15, 26, 34)
-#cities=(5, 15, 17, 28, 32)
-#cities=(15, 26, 28, 29, 32)
+
+cities=(2,4,15,24,32)
 cities=sorted(cities)
 k=len(cities)
 
@@ -67,10 +63,7 @@ while True:
 f.close()
 
 
-#print(dis)
-# read all lines at once
-#lines = list(f)
-# Range of plants and warehouses
+
 nbcont=k+n*2
 nbvar=n*k+1
 lignes = range(nbcont)
@@ -115,8 +108,6 @@ for j in range(n):
 	for i in cities:
 		ci.append(dis[j][i])
 
-#print(len(c))
-
 m=[]
 l2 =[]
 
@@ -132,14 +123,9 @@ for i in range (0,len(ci),k):
 	l2.append(-1)
 	m.append(l2)
 
-#print(m)
-
-
 matrice_contraintes.extend(co_pop)
 matrice_contraintes.extend(m)
 
-#print(len(matrice_contraintes))
-#print(len(matrice_contraintes[0]))
 
 ###########################SECONDE MEMBRE###############################
 alpha = 0.1
@@ -150,15 +136,14 @@ s = 0
 for i in pop:
 	s = s + i
 
-landa = (1 + alpha) / k 
-#print(landa)
+gamma = (1 + alpha) / k 
+
 
 for i in range(k):
-    b.append(landa * s)
+    b.append(gamma * s)
 
 for i in range(n):
     b.append(0)
-#print(len(b))
 
 ######################FONCTION OBJECTIVE################################
 c = []
@@ -168,7 +153,6 @@ for j in range(n):
         c.append(epsilon*dis[j][i])
 c.append(1)
 cici=c
-#print(c)
 
 ###############################GUROBI####################################
 
@@ -179,9 +163,8 @@ m1=Model()
 x = []
 for i in range(n):
     for j in cities:
-  #    for j in range(k):
         x.append(m1.addVar(vtype=GRB.BINARY
-                          , lb=0, name="x%d_%d" % (i+1,j+1)))
+                          , lb=0, name="x%d_%d" % (i,j)))
 x.append((m1.addVar(vtype=GRB.CONTINUOUS
                           , lb=0, name="g")))
 # maj du modele pour integrer les nouvelles variables
@@ -197,7 +180,6 @@ m1.setObjective(obj,GRB.MINIMIZE)
 # Definition des contraintes
 for i in range(0,n):
     m1.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) == b[i], "Contrainte%d" % i)
-    #print(i,j)
 
 for i in range(n,n+k):
     m1.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) <= b[i], "Contrainte%d" % i)
@@ -206,22 +188,19 @@ for i in range(n+k,n*2+k):
     m1.addConstr(quicksum(matrice_contraintes[i][j]*x[j] for j in colonnes) <= b[i], "Contrainte%d" % i)
     
 # Resolution
-#m1.Params.BranchDir= 1
+
 m1.optimize()
 
-#ImproveStartGap=0.3
+#Affichage
 
 print("")                
 print('Solution optimale:')
 
 
-#for i in range(36*k):
-    #print('x%d'%(i+1), '=', x[i].x)
-
 k=0
 for i in range(n):
     for j in cities:
-        print('x%d_%d'%(i+1,j+1), '=', x[k].x)
+        print('x%d_%d'%(i,j), '=', x[k].x)
         k=k+1;
 print('g', '=', x[k].x)
         
@@ -263,14 +242,15 @@ MinSat=max(Satv)
 ind=[i for i, j in enumerate(Satv) if j == MinSat]
 print(ind)
 
-
+#Calcul de PE
 activehubs=cities
-#exec(open("projet1(1).py").read())
-(Sat1,Satv1)=optdistr1(activehubs)
+(Sat1,Satv1)=optdistr1(activehubs,alpha) #on resout le programme lineaire 1 avec les memes citès 
 print(Sat)
-PE=1-Sat1/Sat
+PE=1-Sat1/Sat #Prix de l'equitè
 print("PE",'=',PE)
 
+for i in cities:
+    print(data["Villes"][i])
 
 
 stop = timeit.default_timer()
@@ -278,3 +258,4 @@ stop = timeit.default_timer()
 print('Time: ', stop - start) 
 
 #ma =m1.write("qa.lp")
+
