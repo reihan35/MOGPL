@@ -1,9 +1,12 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Fri Nov 23 17:19:23 2018
 
 @author: 3803008
 """
+
+#Resolution de question 1 avec une liste de citès à choix
 import re
     
 from gurobipy import *
@@ -45,11 +48,7 @@ def optdistr1(activehubs,alfa):
     f.close()
     
     
-    
-    #print(dis)
-    # read all lines at once
-    #lines = list(f)
-    # Range of plants and warehouses
+
     nbcont=k+n
     nbvar=n*k
     lignes = range(nbcont)
@@ -176,5 +175,5 @@ def optdistr1(activehubs,alfa):
         Satv1.append(c[j] * x[j].x)
     SatM1=Sat1/n
     MinSat1=max(Satv1)
-    return (Sat1,Satv1)
+    return (Sat1,Satv1) #return la satisfaction globale en resolvant le programme 1 et la liste des satisfactions
 
